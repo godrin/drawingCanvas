@@ -6,15 +6,22 @@
         <SCRIPT type="text/javascript" src="./lib/jquery-1.3.2.js"></SCRIPT> 
         <SCRIPT type="text/javascript" src="./lib/jsDoodle.js"></SCRIPT> 
          <SCRIPT type="text/javascript"> 
+            var myCanvas;
             $(document).ready(function() {
-                var o=$("#drawCanvas");
-//                alert(o);
-                o.jsDoodle();
+              myCanvas=$("#drawCanvas").jsDoodle();
             });
+            
+            function myclear() {
+//              var x=$("#drawCanvas").get(0);
+  //            x.clear();
+              myCanvas.clear();
+            }
             
         </SCRIPT> 
 </head>
 <body>
+<div>klsjdfkdfj</div>
 <canvas id='drawCanvas' width='200px;' height='200px;'></canvas>
+<a href='javascript:myclear();'>Clear</a>
 </body>
 </html>
