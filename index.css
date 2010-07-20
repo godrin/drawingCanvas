@@ -1,0 +1,12 @@
+div#drawingArea {
+  border-width:10px;
+  border-color:#AAAAFF;
+  border-style:solid;
+  width:302px;
+}
+
+div#drawingArea canvas {
+  width:300px;
+  height:500px;
+  border:1px black solid;
+}
