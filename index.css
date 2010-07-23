@@ -10,3 +10,9 @@ div#drawingArea canvas {
   height:500px;
   border:1px black solid;
 }
+
+div#muh {
+  width:200px;
+  height:400px;
+  border:1px black solid;
+}

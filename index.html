@@ -8,11 +8,14 @@
         <SCRIPT type="text/javascript" src="./lib/jsDoodle.js"></SCRIPT> 
          <SCRIPT type="text/javascript"> 
             var myCanvas;
-            var savedImage;
+            var savedImage=[];
             $(document).ready(function() {
-              myCanvas=$("#drawCanvas").jsDoodle();
+              myCanvas=$("#drawCanvas").jsDoodle({readonly:true});
               myCanvas.getImage();
+              smallCanvas=$("#muh").jsDoodle();
             });
+            
+            
             
             function myclear() {
               myCanvas.clear();
@@ -24,7 +27,7 @@
               myCanvas.undo();
             }
             function mysave() {
-              var tmp=myCanvas.getImage();
+              var tmp=smallCanvas.getImage();
               savedImage=tmp.clone(); 
             }
             function myload() { 
@@ -38,6 +41,9 @@
   <div id='drawingArea'>
     <canvas id='drawCanvas' width='300' height='500'></canvas>
   </div>
+  
+  <div id='muh'></div>
+  
   <a href='javascript:myclear();'>Clear</a>
   <a href='javascript:myredraw();'>Redraw</a>
   <a href='javascript:myundo();'>Undo</a>
