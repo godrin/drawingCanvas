@@ -1,24 +1,38 @@
 <html>
 <head>
-        <LINK rel="stylesheet" type="text/css" href="./lib/js-mindmap.css"> 
-        <LINK rel="stylesheet" type="text/css" href="./lib/ui.css"> 
-        <LINK rel="stylesheet" type="text/css" href="./index.css"> 
-        <SCRIPT type="text/javascript" src="./lib/excanvas.js"></SCRIPT> 
+  <title>Doodle</title>
+<!-- color picker -->
+
         <SCRIPT type="text/javascript" src="./lib/jquery-1.3.2.js"></SCRIPT> 
-        <SCRIPT type="text/javascript" src="./lib/jsDoodle.js"></SCRIPT> 
+        <SCRIPT type="text/javascript" src="./lib/excanvas.js"></SCRIPT> 
+
+    	<link rel="stylesheet" href="colorpicker/css/colorpicker.css" type="text/css" />
+	    <script type="text/javascript" src="colorpicker/js/colorpicker.js"></script>
+
+        <LINK rel="stylesheet" type="text/css" href="doodle/css/index.css"> 
+        <SCRIPT type="text/javascript" src="doodle/js/jsDoodle.js"></SCRIPT> 
+        
+        
          <SCRIPT type="text/javascript"> 
             var myCanvas;
             var savedImage=[];
+            var list;
             $(document).ready(function() {
-              myCanvas=$("#drawCanvas").jsDoodle({readonly:true});
+              myCanvas=$("#drawingArea").jsDoodle(); //{readonly:true});
               myCanvas.getImage();
-              smallCanvas=$("#muh").jsDoodle();
+              list=$("#list").jsDoodleList();
+              $("#colorPicker0").ColorPicker({
+			flat: true,
+			color: '#00ff00',
+			onSubmit: function(hsb, hex, rgb) {
+				$('#colorSelector2 div').css('backgroundColor', '#' + hex);
+				myCanvas.setColor('#'+hex);
+			}
+		});
             });
             
-            
-            
             function myclear() {
-              myCanvas.clear();
+              myCanvas.setEmpty();
             }
             function myredraw() {
               myCanvas.redraw();
@@ -27,27 +41,38 @@
               myCanvas.undo();
             }
             function mysave() {
-              var tmp=smallCanvas.getImage();
+              var tmp=myCanvas.getImage();
               savedImage=tmp.clone(); 
-            }
-            function myload() { 
-              myCanvas.setImage(savedImage); 
+              item=list.add(savedImage);
+              f=function(self,e) {
+                var api=self.doodle_api;
+                var image=api.getImage().clone();
+                myCanvas.setImage(image);
+              };
+              item.onclick(f);
             }
             
         </SCRIPT> 
 </head>
 <body>
-  <div>Paint:</div>
-  <div id='drawingArea'>
-    <canvas id='drawCanvas' width='300' height='500'></canvas>
+  <div id='drawWindow'>
+    <div id='drawingArea_title'>Paint</div>
+    <div id='drawingArea'></div>
   </div>
-  
-  <div id='muh'></div>
-  
-  <a href='javascript:myclear();'>Clear</a>
-  <a href='javascript:myredraw();'>Redraw</a>
-  <a href='javascript:myundo();'>Undo</a>
-  <a href='javascript:mysave();'>Save</a>
-  <a href='javascript:myload();'>Load</a>
+  <div id='list'></div>
+  <div id='buttons'>
+    <div id='colorPicker0' ></div>
+    
+    				<div id="customWidget">
+					<div id="colorSelector2"><div style="background-color: #00ff00"></div></div>
+	                <div id="colorpickerHolder2">
+	                </div>
+				</div>
+
+    <a href='javascript:myclear();'>Clear</a>
+<!--    <a href='javascript:myredraw();'>Redraw</a> -->
+    <a href='javascript:myundo();'>Undo</a>
+    <a href='javascript:mysave();'>Save</a>
+  </div>
 </body>
 </html>

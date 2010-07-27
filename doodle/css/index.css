@@ -1,0 +1,74 @@
+body {
+  font-family:Helvetica;
+}
+
+div#drawingArea_title {
+  border-width:5px;
+  border-color:#00AA00;
+  background-color:#00AA00;
+  border-bottom-width:3px;
+  color:#FFFFFF;
+  border-style:solid;
+  -moz-border-radius: 8px; 
+  -webkit-border-radius: 8px;
+  display:inline-block;
+  -moz-border-radius-bottomleft:0px;
+  -webkit-border-bottom-left-radius:0px;
+  -moz-border-radius-bottomright:0px;
+  -webkit-border-bottom-right-radius:0px;
+}
+
+div#drawingArea {
+  border-width:10px;
+  border-color:#00AA00;
+  border-style:solid;
+  -moz-border-radius: 8px; 
+  -webkit-border-radius: 8px;
+  -moz-border-radius-topleft:0px;
+  -webkit-border-top-left-radius:0px;
+  width:400px;
+  height:300px;
+}
+
+div#drawingArea canvas {
+  border:2px #00CC00 inset;
+}
+
+div#drawWindow {
+  display:inline-block;
+}
+
+div#muh {
+  width:200px;
+  height:400px;
+  border:1px black solid;
+}
+
+div.listItem {
+  width:40px;
+  height:30px;
+  display:inline-block;
+}
+
+/* border */
+div.listItem {
+  border-width:3px;
+  border-color:#00AA00;
+  background-color:#FFFFFF;
+  border-bottom-width:3px;
+  color:#FFFFFF;
+  border-style:solid;
+  -moz-border-radius: 8px; 
+  -webkit-border-radius: 8px;
+  margin:4px;
+}
+
+div#list {
+  margin-top:40px;
+  height:300px;
+  width:200px;
+  background-color:#AAAAAA;
+  display:inline-block;
+  overflow:scroll;
+  vertical-align:top;  
+}
